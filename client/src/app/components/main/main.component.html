@@ -1,0 +1,71 @@
+
+  <div *ngIf="!authService.loggedIn()" class="col-md">
+    <!-- <app-login></app-login>
+    <app-register></app-register> -->
+  </div>
+  <div class="col-md  bg-dark" style="width:100%;align-items: center;margin-top: 14px;">
+    <h1 class="text-danger text-center m-3"><fa name="shopping-cart" class="pr-2"></fa>Benki</h1>
+    <br>
+    <br>
+    <p class="m-6" style="color: #ffe4c4;text-align: center;font-family:sans-serif;font-size: 100px;height: 150%;">
+      welcome to our shop
+    </p>
+    <div class="text-center text-white p-3 mx-0 my-0">
+      <span
+        ><strong>{{ productsTotal }}</strong></span
+      >
+      products are now available in our store!<br />
+      <span
+        ><strong>{{ ordersTotal }}</strong></span
+      >
+      orders has been purchased on our site
+    </div>
+   
+    <p class="text-center">
+      <img
+        src="./assets/images/about-intro.jpg"
+        class="img-fluid rounded border border-danger p-1"
+        alt="Products Info"
+      /><br>
+      <br><br><p class="class="m-6 style="color: cornsilk;">
+      Our shop contains the grocery items which are use fuk for daily items with average price.</p>
+    </p>
+    <br><br><br>
+    <!-- spinner -->
+    <div *ngIf="isLoading" class="spinner-border text-danger" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    
+
+    <div *ngIf="user" class="text-center bg-warning border rounded p-1 mx-5">
+      <app-notification-panel [user]="user"></app-notification-panel>
+    </div>
+  </div>
+  <!-- <div class="col-md bg-dark p-4">
+  <p class="mx-4"><img src="./assets/images/about-info.jpg" class="img-fluid rounded" alt="Products Info" /></p>
+    
+  </div>
+ -->
+
+<!-- The Modal -->
+<div class="modal" id="mainModal" [ngStyle]="{ display: display }">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header bg-dark text-white text-center">
+        <h4 class="modal-title" [innerHTML]="modalHeader ? modalHeader : 'Success!'"></h4>
+        <button type="button" (click)="onCloseHandled()" class="close" data-dismiss="modal" routerLink="/">
+          &times;
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body" *ngIf="modalBody" [innerHTML]="modalBody"></div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" (click)="onCloseHandled()" class="btn btn-danger" data-dismiss="modal" routerLink="/">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
